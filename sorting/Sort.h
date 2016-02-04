@@ -11,12 +11,13 @@ namespace Sorting {
 
     class Sort {
     public:
-        virtual std::vector<float> sort() = 0;
         Sort(std::vector<float> items);
         Sort();
 
         std::vector<float> getList();
         void setList(std::vector<float> items);
+
+        virtual std::vector<float> sort() = 0;
 
     protected:
         std::vector<float> list;

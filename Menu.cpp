@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "Menu.h"
+#include "sorting/BubbleSort.h"
 
 using namespace std;
 
@@ -36,9 +37,17 @@ Menu::Menu() {
             case 2:
                 loadSampleDataOne();
                 break;
+            case 3:
+                loadSampleDataTwo();
+                break;
             case 5:
                 viewData();
                 break;
+            case 6: {
+                Sorting::BubbleSort bs(list);
+                bs.sort();
+            }
+
             case 9:
             default:
                 break;
@@ -60,6 +69,25 @@ void Menu::setData() {
 }
 
 void Menu::loadSampleDataOne() {
+    // Remove any previous items from the list
+    list.clear();
     list.push_back(1.25f);
-    cout << "The list now contains one item: 1.25" << endl;
+    cout << "The list now contains one item: 1.25. Any previous items were removed." << endl;
+}
+
+void Menu::loadSampleDataTwo() {
+    // Remove any previous items from the list
+    list.clear();
+    list.push_back(73.59509428489079f);
+    list.push_back(38.05690529220719f);
+    list.push_back(40.8147767357453f);
+    list.push_back(82.44280484654654f);
+    list.push_back(29.655267720748956f);
+    list.push_back(24.86252465694741f);
+    list.push_back(81.17984809783519f);
+    list.push_back(31.87366439811784f);
+    list.push_back(20.033510524686303f);
+    list.push_back(40.11811674327186f);
+
+    cout << "The list now contains 10 items. Any previous items were removed." << endl;
 }
