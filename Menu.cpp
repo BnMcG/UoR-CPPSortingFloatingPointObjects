@@ -40,6 +40,9 @@ Menu::Menu() {
             case 3:
                 loadSampleDataTwo();
                 break;
+            case 4:
+                loadSampleDataThree();
+                break;
             case 5:
                 viewData();
                 break;
@@ -91,4 +94,19 @@ void Menu::loadSampleDataTwo() {
     list.push_back(40.11811674327186f);
 
     cout << "The list now contains 10 items. Any previous items were removed." << endl;
+}
+
+void Menu::loadSampleDataThree() {
+    list.clear();
+    list.push_back(27.52986550373471f);
+    list.push_back(-0.0f);
+    list.push_back(0.0f);
+    list.push_back(-33.16274463433734f);
+    list.push_back(95.60185162280405f);
+    list.push_back(0.0f);
+    list.push_back(95.71985644171795f);
+    list.push_back(-0.0f);
+    list.push_back(-44.9345345334543f);
+
+    cout << "The list now contains items such as +0, -0" << endl;
 }
