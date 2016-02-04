@@ -1,0 +1,17 @@
+//
+// Created by ben on 04/02/16.
+//
+
+#ifndef UOR_CPPSORTINGFLOATINGPOINTOBJECTS_BUBBLESORT_H
+#define UOR_CPPSORTINGFLOATINGPOINTOBJECTS_BUBBLESORT_H
+
+namespace Sorting {
+
+    class BubbleSort {
+
+    };
+
+}
+
+
+#endif //UOR_CPPSORTINGFLOATINGPOINTOBJECTS_BUBBLESORT_H
