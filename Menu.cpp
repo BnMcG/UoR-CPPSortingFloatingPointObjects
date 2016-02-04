@@ -45,7 +45,8 @@ Menu::Menu() {
                 break;
             case 6: {
                 Sorting::BubbleSort bs(list);
-                bs.sort();
+                list = bs.sort();
+                cout << "List now bubble sorted! Be sure to view the list by choosing the appropriate menu item!" << endl;
             }
 
             case 9:
