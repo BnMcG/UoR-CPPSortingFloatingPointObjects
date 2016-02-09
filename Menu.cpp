@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "Menu.h"
-#include "sorting/BubbleSort.h"
+#include "sorting/UoRBubbleSort.h"
 
 using namespace std;
 
@@ -47,11 +47,10 @@ Menu::Menu() {
                 viewData();
                 break;
             case 6: {
-                Sorting::BubbleSort bs(list);
-                list = bs.sort();
-                cout << "List now bubble sorted! Be sure to view the list by choosing the appropriate menu item!" << endl;
+                Sorting::UoRBubbleSort ubs(uflist);
+                uflist = ubs.sort();
+                cout << "List now UoR bubble sorted!" << endl;
             }
-
             case 9:
             default:
                 break;
@@ -63,8 +62,13 @@ Menu::Menu() {
 
 void Menu::viewData() {
     cout << "Below are the items currently stored to be sorted. If no items appear, the data set is empty:" << endl;
-    for(auto &i : list) {
-        cout << i << endl;
+    for(auto &i : uflist) {
+
+        if(floatingpoint::UoRFloat::isNaN(i)) {
+            cout << "NaN with mantissa " << i.getMantissa() << endl;
+        } else {
+            cout << i.getFloat() << endl;
+        }
     }
 }
 
@@ -74,39 +78,44 @@ void Menu::setData() {
 
 void Menu::loadSampleDataOne() {
     // Remove any previous items from the list
-    list.clear();
-    list.push_back(1.25f);
+    uflist.clear();
+    uflist.push_back(floatingpoint::UoRFloat(10));
     cout << "The list now contains one item: 1.25. Any previous items were removed." << endl;
 }
 
 void Menu::loadSampleDataTwo() {
     // Remove any previous items from the list
-    list.clear();
-    list.push_back(73.59509428489079f);
-    list.push_back(38.05690529220719f);
-    list.push_back(40.8147767357453f);
-    list.push_back(82.44280484654654f);
-    list.push_back(29.655267720748956f);
-    list.push_back(24.86252465694741f);
-    list.push_back(81.17984809783519f);
-    list.push_back(31.87366439811784f);
-    list.push_back(20.033510524686303f);
-    list.push_back(40.11811674327186f);
+    uflist.clear();
+    uflist.push_back(floatingpoint::UoRFloat(38.05690529220719f));
+    uflist.push_back(floatingpoint::UoRFloat(40.8147767357453f));
+    uflist.push_back(floatingpoint::UoRFloat(82.44280484654654f));
+    uflist.push_back(floatingpoint::UoRFloat(29.655267720748956f));
+    uflist.push_back(floatingpoint::UoRFloat(24.86252465694741f));
+    uflist.push_back(floatingpoint::UoRFloat(81.17984809783519f));
+    uflist.push_back(floatingpoint::UoRFloat(31.87366439811784f));
+    uflist.push_back(floatingpoint::UoRFloat(20.033510524686303f));
+    uflist.push_back(floatingpoint::UoRFloat(40.11811674327186f));
 
     cout << "The list now contains 10 items. Any previous items were removed." << endl;
 }
 
 void Menu::loadSampleDataThree() {
-    list.clear();
-    list.push_back(27.52986550373471f);
-    list.push_back(-0.0f);
-    list.push_back(0.0f);
-    list.push_back(-33.16274463433734f);
-    list.push_back(95.60185162280405f);
-    list.push_back(0.0f);
-    list.push_back(95.71985644171795f);
-    list.push_back(-0.0f);
-    list.push_back(-44.9345345334543f);
+
+    // We need to pass exponents as pointers
+    // Woe betide us
+    int *exp1 = new int(4);
+    int *nanexp = new int(255);
+
+    uflist.clear();
+    uflist.push_back(floatingpoint::UoRFloat(20));
+    uflist.push_back(floatingpoint::UoRFloat(0.8, exp1));
+    uflist.push_back(floatingpoint::UoRFloat(0.9, nanexp));
+    uflist.push_back(floatingpoint::UoRFloat(0.0f));
+    uflist.push_back(floatingpoint::UoRFloat(0.6, nanexp));
+    uflist.push_back(floatingpoint::UoRFloat(0.532, nanexp));
+    uflist.push_back(floatingpoint::UoRFloat(0.43, exp1));
+    uflist.push_back(floatingpoint::UoRFloat(-0.0f));
+    uflist.push_back(floatingpoint::UoRFloat(-1));
 
     cout << "The list now contains items such as +0, -0" << endl;
 }

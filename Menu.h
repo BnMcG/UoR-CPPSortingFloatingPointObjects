@@ -6,6 +6,7 @@
 #define UOR_CPPSORTINGFLOATINGPOINTOBJECTS_MENU_H
 
 #include <vector>
+#include "floatingpoint/UoRFloat.h"
 
 class Menu {
 public:
@@ -16,7 +17,7 @@ public:
     void loadSampleDataTwo();
     void loadSampleDataThree();
 private:
-    std::vector<float> list;
+    std::vector<floatingpoint::UoRFloat> uflist;
 };
 
 
